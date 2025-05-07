@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import Lessons from './pages/Lessons';
 import Calendar from './pages/Calendar';
+import LessonDetail from './pages/LessonDetail';
 import Stats from './pages/Stats';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/lessons" element={<Lessons />} />
+            <Route path="/lessons/:id" element={<LessonDetail />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/stats" element={<Stats />} />
           </Routes>

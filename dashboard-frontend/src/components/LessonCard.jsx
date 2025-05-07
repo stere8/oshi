@@ -3,7 +3,10 @@ import { Pencil1Icon, TrashIcon, CheckIcon, Cross2Icon } from '@radix-ui/react-i
 
 const LessonCard = ({ lesson, onDelete, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedLesson, setEditedLesson] = useState({ title: lesson.title, description: lesson.description });
+  const [editedLesson, setEditedLesson] = useState({
+    title: lesson.title,
+    description: lesson.description
+  });
 
   const handleSave = () => {
     onUpdate(lesson.id, editedLesson);
@@ -11,45 +14,64 @@ const LessonCard = ({ lesson, onDelete, onUpdate }) => {
   };
 
   return (
-    <div className="bg-white p-4 shadow rounded">
+    <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
       {isEditing ? (
         <>
           <input
             value={editedLesson.title}
             onChange={(e) => setEditedLesson({ ...editedLesson, title: e.target.value })}
-            className="w-full mb-2 border rounded p-2"
+            className="w-full mb-3 border border-gray-300 rounded-md p-2 text-sm"
+            placeholder="Title"
           />
           <textarea
             value={editedLesson.description}
             onChange={(e) => setEditedLesson({ ...editedLesson, description: e.target.value })}
-            className="w-full mb-2 border rounded p-2"
+            className="w-full mb-3 border border-gray-300 rounded-md p-2 text-sm"
+            placeholder="Description"
+            rows={3}
           />
         </>
       ) : (
         <>
-          <h3 className="font-semibold text-lg">{lesson.title}</h3>
-          <p className="text-gray-700 mb-2">{lesson.description}</p>
+          <h3 className="text-lg font-semibold text-gray-800 mb-1">{lesson.title}</h3>
+          <p className="text-gray-600 text-sm mb-3">{lesson.description}</p>
         </>
       )}
 
-      <div className="text-sm text-gray-600 mb-3">Progress: {lesson.progress}%</div>
+      <p className="text-sm text-gray-500 mb-4">Progress: {lesson.progress}%</p>
 
-      <div className="flex gap-2 justify-end">
+      <div className="flex gap-3 justify-end">
         {isEditing ? (
           <>
-            <button onClick={handleSave} className="p-2 bg-green-500 hover:bg-green-600 text-white rounded">
+            <button
+              onClick={handleSave}
+              className="p-2 rounded-md bg-green-500 hover:bg-green-600 text-white focus:outline-none focus:ring-2 focus:ring-green-300"
+              aria-label="Save"
+            >
               <CheckIcon />
             </button>
-            <button onClick={() => setIsEditing(false)} className="p-2 bg-gray-400 hover:bg-gray-500 text-white rounded">
+            <button
+              onClick={() => setIsEditing(false)}
+              className="p-2 rounded-md bg-gray-400 hover:bg-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-gray-300"
+              aria-label="Cancel"
+            >
               <Cross2Icon />
             </button>
           </>
         ) : (
           <>
-            <button onClick={() => setIsEditing(true)} className="p-2 bg-yellow-400 hover:bg-yellow-500 text-white rounded">
+            <button
+              onClick={() => setIsEditing(true)}
+              className="p-2 rounded-md bg-yellow-400 hover:bg-yellow-500 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              aria-label="Edit"
+            >
               <Pencil1Icon />
             </button>
-            <button onClick={() => onDelete(lesson.id)} className="p-2 bg-red-500 hover:bg-red-600 text-white rounded">
+            <button
+              onClick={() => onDelete(lesson.id)}
+              className="p-2 rounded-md bg-red-500 hover:bg-red-600 text-white focus:outline-none focus:ring-2 focus:ring-red-300"
+              aria-label="Delete"
+            >
               <TrashIcon />
             </button>
           </>

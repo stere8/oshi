@@ -19,6 +19,10 @@ const Dashboard = () => {
 
   return (
     <div className="p-6">
+      <div className="bg-red-500 text-white p-4">
+  If you see a red box, Tailwind is working!
+</div>
+
       <h2 className="text-3xl font-bold mb-6">Welcome Back!</h2>
 
       {/* Summary Cards */}
@@ -34,7 +38,7 @@ const Dashboard = () => {
         {lessons.map(lesson => (
           <div key={lesson.id} className="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow">
             <div className="flex justify-between items-center mb-2">
-              <Link to={`/lesson/${lesson.id}`} className="text-xl font-semibold text-blue-600 hover:underline">
+              <Link to={`/lessons/${lesson.id}`} className="text-xl font-semibold text-blue-600 hover:underline">
                 {lesson.title}
               </Link>
               <span className="text-sm text-gray-500">{lesson.progress}%</span>

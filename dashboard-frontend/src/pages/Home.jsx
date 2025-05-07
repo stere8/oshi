@@ -13,16 +13,31 @@ export default function Home() {
         alert("Could not fetch lessons. See console for details.");
       });
   }, []);
-  
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Weekly Lessons</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {lessons.map(lesson => (
-          <LessonCard key={lesson.id} lesson={lesson} />
-        ))}
-      </div>
+    <div className="max-w-7xl mx-auto px-4 py-10">
+      <h1 className="text-4xl font-bold text-center mb-10 text-gray-800">
+        📘 Weekly Lessons
+      </h1>
+      <div className="bg-red-500 text-white p-4">
+  If you see a red box, Tailwind is working!
+</div>
+
+
+      {lessons.length === 0 ? (
+        <p className="text-center text-gray-500">No lessons found yet.</p>
+      ) : (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {lessons.map(lesson => (
+            <LessonCard key={lesson.id} lesson={lesson} />
+            
+          ))}
+          <div className="bg-red-500 text-white p-4">
+  If you see a red box, Tailwind is working!
+</div>
+
+        </div>
+      )}
     </div>
   );
 }
