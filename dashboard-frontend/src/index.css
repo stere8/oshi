@@ -1,10 +1,11 @@
 /* index.css */
 body {
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  font-family: 'Segoe UI', 'Inter', sans-serif;
-  background-color: #f1f3f5;
-  color: #212529;
+  background-color: #f9fafb;
+  color: #111827;
 }
+
 
 a {
   color: #6c5ce7;

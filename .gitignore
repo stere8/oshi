@@ -362,4 +362,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Ignore only the images folder inside wwwroot
-OnlineShop/wwwroot/images/
+
+archives/
+archives/dashboardapi.zip
+archives/dashboard-frontend.zip

@@ -1,8 +1,6 @@
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
-import LessonDetail from './pages/LessonDetail';
 import Lessons from './pages/Lessons';
 import Calendar from './pages/Calendar';
 import Stats from './pages/Stats';
@@ -10,18 +8,16 @@ import Stats from './pages/Stats';
 function App() {
   return (
     <Router>
-      <div>
-        <Sidebar />
-        <div className="main">
-          <Header />
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 p-4">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/lessons" element={<Lessons />} />
-            <Route path="/lesson/:id" element={<LessonDetail />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/stats" element={<Stats />} />
           </Routes>
-        </div>
+        </main>
       </div>
     </Router>
   );
