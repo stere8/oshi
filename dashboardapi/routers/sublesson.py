@@ -13,3 +13,10 @@ def create_lesson(sublesson: sublesson_schema.SubLessonCreate, db: Session = Dep
 @router.get("/", response_model= list[sublesson_schema.SubLessonResponse])
 def read_lessons(db: Session = Depends(get_db)):
     return sublesson_crud.get_all_sublessons(db)
+
+@router.get("/lesson/{lesson_id}")
+def get_sublessons_by_lesson(lesson_id: int, db: Session = Depends(get_db)):
+    sublessons = sublesson_crud.get_sublessons_of_lesson(db, lesson_id)
+    if not sublessons:
+        raise HTTPException(status_code=404, detail="No sublessons found for this lesson")
+    return sublessons

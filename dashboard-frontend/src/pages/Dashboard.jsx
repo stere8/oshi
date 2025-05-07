@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {api} from "../services/api"; // Adjust the import based on your project structure
 
 const Dashboard = () => {
   const [lessons, setLessons] = useState([]);
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/lesson/")
+    api.getLessons()
       .then(res => setLessons(res.data))
       .catch(err => console.error("Failed to load lessons", err));
   }, []);
@@ -44,7 +45,7 @@ const Dashboard = () => {
       {lessons.map(lesson => (
   <div key={lesson.id} className="bg-white p-4 shadow rounded">
     <h3 className="font-semibold text-lg">
-      <Link to={`/lessons/${lesson.id}`} className="text-blue-600 hover:underline">
+      <Link to={`/lesson/${lesson.id}`} className="text-blue-600 hover:underline">
         {lesson.title}
       </Link>
     </h3>

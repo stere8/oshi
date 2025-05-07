@@ -14,3 +14,4 @@ def get_all_sublessons(db: Session):
 
 def get_sublessons_of_lesson(db: Session, lesson_id: int):
     return db.query(SubLesson).filter(SubLesson.lesson_id == lesson_id).all()
+

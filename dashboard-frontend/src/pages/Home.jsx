@@ -6,7 +6,7 @@ export default function Home() {
   const [lessons, setLessons] = useState([]);
 
   useEffect(() => {
-    api.get("/lesson/", { withCredentials: false })
+    api.get("/lessons/", { withCredentials: false })
       .then(res => setLessons(res.data))
       .catch(err => {
         console.error("API Fetch Failed:", err.message);
