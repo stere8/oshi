@@ -1,14 +1,12 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean
-from sqlalchemy.orm import mapped_column, Mapped
-
+from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey
 from database import Base
 
 class SubLesson(Base):
     __tablename__ = "sublesson"
 
-    id = Column(Integer, primary_key=True,index=True)
-    lesson_id = Column(Integer, ForeignKey('lesson.id'))
-    title: Mapped[str] = mapped_column(String, nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String)
     schedule_date = Column(DateTime)
-    notes = Column(String, nullable=True)
-    completed = Column(Boolean)
+    notes = Column(String)
+    lesson_id = Column(Integer, ForeignKey("lesson.id"))
+    completed = Column(Boolean, default=False)
