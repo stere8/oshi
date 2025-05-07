@@ -1,0 +1,74 @@
+-- database: c:\Users\oracle.admin\source\repos\OresteDashboard\dashboardapi\database.db
+
+SELECT * FROM lesson;
+INSERT INTO lesson (title, description, progress) VALUES ('Cybersecurity', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('.NET', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('React', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('Talix Consults', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('Fitness', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('Creative Expression', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('Mindset', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('Spanish', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('Chess', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('Poker', 'Auto-generated from weekly sprint', 0.0);
+INSERT INTO lesson (title, description, progress) VALUES ('Planning', 'Auto-generated from weekly sprint', 0.0);
+-- database: /path/to/database.db
+INSERT INTO sublesson (title, schedule_date, notes, lesson_id, completed)
+VALUES
+-- Cybersecurity (lesson_id = 6)
+('Cybersecurity Fundamentals – LinkedIn', '2025-05-05 09:00:00', 'Daily 1h course', 6, 0),
+('Secure coding practice – OWASP', '2025-05-05 11:00:00', '30min review/write secure code', 6, 0),
+('Research certification path (Security+ or eJPT)', '2025-05-09 14:00:00', 'Bonus item', 6, 0),
+
+-- .NET (lesson_id = 7)
+('.NET Backend Course – Day 1', '2025-05-05 13:00:00', '45min backend training', 7, 0),
+('.NET Backend Course – Day 3', '2025-05-07 13:00:00', 'Alternate day', 7, 0),
+('.NET Backend Course – Day 5', '2025-05-09 13:00:00', 'Alternate day', 7, 0),
+
+-- React (lesson_id = 8)
+('React Course – Day 2', '2025-05-06 13:00:00', '45min frontend training', 8, 0),
+('React Course – Day 4', '2025-05-08 13:00:00', 'Alternate day', 8, 0),
+
+-- Talix Consults (lesson_id = 9)
+('Outline 3 services', '2025-05-06 15:00:00', 'Secure Dev, Pentesting, API Audit', 9, 0),
+('Sketch landing page structure', '2025-05-07 16:00:00', 'Draw on paper or Notion', 9, 0),
+('Check domain availability', '2025-05-08 17:00:00', 'Research and lock domain', 9, 0),
+
+-- Fitness (lesson_id = 10)
+('Morning Dumbbell Strength', '2025-05-05 07:30:00', '30–40min strength training', 10, 0),
+('Evening Ab Roller/Core', '2025-05-05 19:00:00', '15–20min core workout', 10, 0),
+('Track protein + hydration', '2025-05-05 21:00:00', 'Daily nutrition check-in', 10, 0),
+('Sleep Shift Practice', '2025-05-05 22:00:00', 'Shift sleep by 15–30min', 10, 0),
+('Research top 3 CPT programs', '2025-05-09 12:00:00', 'Compare duration/cost', 10, 0),
+
+-- Creative Expression (lesson_id = 11)
+('Dance Practice #1', '2025-05-06 18:00:00', '20–30min freestyle or tutorial', 11, 0),
+('Dance Practice #2', '2025-05-08 18:00:00', 'Repeat session', 11, 0),
+('Figure Skating Drills', '2025-05-07 17:00:00', 'Balance/stretch', 11, 0),
+('Review Modeling Photos', '2025-05-09 10:00:00', 'Pick 3 for portfolio', 11, 0),
+('Plan Q2 Photoshoot', '2025-05-09 11:00:00', 'Moodboard/style', 11, 0),
+
+-- Mindset (lesson_id = 12)
+('Success Habits – Session 1', '2025-05-06 08:00:00', '20–30min course', 12, 0),
+('Success Habits – Session 2', '2025-05-08 08:00:00', 'Repeat session', 12, 0),
+('Success Habits – Session 3', '2025-05-09 08:00:00', 'Repeat session', 12, 0),
+('Evening Reflection', '2025-05-05 22:30:00', 'What did I execute today?', 12, 0),
+
+-- Spanish (lesson_id = 13)
+('Duolingo Daily', '2025-05-05 06:45:00', '10–20min vocab', 13, 0),
+('Spanish Part 1 – Structured Session', '2025-05-08 09:00:00', 'One per week', 13, 0),
+
+-- Chess (lesson_id = 14)
+('Chess Tactics – Puzzles', '2025-05-06 12:00:00', '20min tactics', 14, 0),
+('Chess Tactics – Video', '2025-05-07 12:00:00', 'Tactical lesson YouTube', 14, 0),
+('Chess Blitz Practice', '2025-05-08 12:00:00', 'Short blitz games', 14, 0),
+('Chess Blitz Practice', '2025-05-09 12:30:00', 'Repeat session', 14, 0),
+
+-- Poker (lesson_id = 15)
+('Study Hand Ranges', '2025-05-06 21:00:00', 'Learn preflop decisions', 15, 0),
+('Online Free Play', '2025-05-07 21:00:00', 'Track outcomes', 15, 0),
+('Study Bluff Theory', '2025-05-09 21:00:00', 'Key concepts', 15, 0),
+
+-- Planning (lesson_id = 16)
+('Daily Notion Check-in', '2025-05-05 07:00:00', 'Check task list', 16, 0),
+('Weekly Review + Planning', '2025-05-09 20:30:00', 'Review + plan next sprint', 16, 0);
