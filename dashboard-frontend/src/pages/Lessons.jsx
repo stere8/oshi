@@ -39,26 +39,35 @@ const Lessons = () => {
     }
   };
 
+  const handleUpdateLesson = async (id, updatedLesson) => {
+    try {
+      await api.updateLesson(id, updatedLesson);
+      loadLessons();
+    } catch (err) {
+      console.error("Failed to update lesson", err);
+    }
+  };
+
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-6">Your Lessons</h2>
-      
+
       {/* Add Lesson Form */}
       <form onSubmit={handleCreateLesson} className="mb-8 space-y-4">
         <input
           type="text"
           value={newLesson.title}
-          onChange={(e) => setNewLesson({...newLesson, title: e.target.value})}
+          onChange={(e) => setNewLesson({ ...newLesson, title: e.target.value })}
           placeholder="Lesson Title"
           className="w-full p-2 border rounded"
         />
         <textarea
           value={newLesson.description}
-          onChange={(e) => setNewLesson({...newLesson, description: e.target.value})}
+          onChange={(e) => setNewLesson({ ...newLesson, description: e.target.value })}
           placeholder="Description"
           className="w-full p-2 border rounded"
         />
-        <button 
+        <button
           type="submit"
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
@@ -72,10 +81,11 @@ const Lessons = () => {
           <p className="text-gray-500">No lessons found.</p>
         ) : (
           lessons.map((lesson) => (
-            <LessonCard 
-              key={lesson.id} 
-              lesson={lesson} 
+            <LessonCard
+              key={lesson.id}
+              lesson={lesson}
               onDelete={handleDeleteLesson}
+              onUpdate={handleUpdateLesson}
             />
           ))
         )}

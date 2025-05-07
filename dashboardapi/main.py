@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 Base.metadata.create_all(bind=engine)  # 🔧 This creates the DB tables
 
 origins = [
-    "http://localhost:3000"
+    "*"
 ]
 app = FastAPI()
 # Enable CORS

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
+import SublessonCard from "../components/SublessonCard";
 
 const LessonDetail = () => {
   const { id } = useParams();
@@ -29,6 +30,26 @@ const LessonDetail = () => {
       setSublessons(sublessonsRes.data);
     } catch (err) {
       console.error("Failed to load lesson details", err);
+    }
+  };
+
+  const handleUpdateSublesson = async (id, updatedData) => {
+    try {
+      await api.updateSubLesson(id, updatedData);
+      setSublessons((prev) =>
+        prev.map(s => s.id === id ? { ...s, ...updatedData } : s)
+      );
+    } catch (err) {
+      console.error("Failed to update sublesson", err);
+    }
+  };
+  
+  const handleDeleteSublesson = async (id) => {
+    try {
+      await api.deleteSubLesson(id);
+      setSublessons((prev) => prev.filter(s => s.id !== id));
+    } catch (err) {
+      console.error("Failed to delete sublesson", err);
     }
   };
 
@@ -110,18 +131,14 @@ const LessonDetail = () => {
         <h3 className="text-lg font-semibold mb-4">Sub-lessons</h3>
         {sublessons.length > 0 ? (
           <div className="space-y-4">
-            {sublessons.map((sublesson) => (
-              <div key={sublesson.id} className="border p-4 rounded-lg">
-                <h4 className="font-medium">{sublesson.title}</h4>
-                <p className="text-sm text-gray-600">{sublesson.notes}</p>
-                <p className="text-sm text-gray-500 mt-2">
-                  Scheduled for: {new Date(sublesson.schedule_date).toLocaleString()}
-                </p>
-                <p className="text-sm text-gray-500">
-                  Status: {sublesson.completed ? "Completed" : "Pending"}
-                </p>
-              </div>
-            ))}
+           {sublessons.map(sublesson => (
+  <SublessonCard
+    key={sublesson.id}
+    sublesson={sublesson}
+    onDelete={handleDeleteSublesson}
+    onUpdate={handleUpdateSublesson}
+  />
+))}
           </div>
         ) : (
           <p className="text-gray-500">No sub-lessons yet</p>

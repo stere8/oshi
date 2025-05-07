@@ -1,14 +1,23 @@
 /* index.css */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f8f9fa;
+  font-family: 'Segoe UI', 'Inter', sans-serif;
+  background-color: #f1f3f5;
   color: #212529;
+}
+
+a {
+  color: #6c5ce7;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .sidebar {
   width: 220px;
-  background-color: #343a40;
+  background-color: #2d3436;
   color: white;
   height: 100vh;
   padding: 20px;
@@ -16,46 +25,73 @@ body {
 }
 
 .sidebar a {
-  display: block;
   color: white;
   margin-bottom: 10px;
-  text-decoration: none;
+  display: block;
+  font-weight: 500;
 }
 
 .sidebar a:hover {
-  text-decoration: underline;
+  background-color: #636e72;
+  padding-left: 10px;
+  border-radius: 4px;
 }
 
 .main {
   margin-left: 240px;
-  padding: 20px;
+  padding: 30px;
 }
 
 .header {
   background-color: #ffffff;
   border-bottom: 1px solid #dee2e6;
   padding: 15px 20px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .card {
   background: white;
-  padding: 15px;
-  border-radius: 6px;
+  padding: 20px;
+  border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .progress-bar {
-  background: #e9ecef;
-  border-radius: 4px;
+  background: #dee2e6;
+  border-radius: 6px;
   height: 10px;
   overflow: hidden;
+  margin-top: 10px;
 }
 
 .progress-bar-fill {
-  background: #007bff;
+  background: #6c5ce7;
   height: 100%;
-  width: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+button {
+  background-color: #6c5ce7;
+  color: white;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #5a4bcf;
+}
+
+input, select, textarea {
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 12px;
 }

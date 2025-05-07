@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import {api} from "../services/api"; // Adjust the import based on your project structure
+import { api } from "../services/api";
 
 const Dashboard = () => {
   const [lessons, setLessons] = useState([]);
@@ -19,52 +18,50 @@ const Dashboard = () => {
   );
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Welcome Back!</h2>
+    <div className="p-6">
+      <h2 className="text-3xl font-bold mb-6">Welcome Back!</h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white p-4 shadow rounded">
-          Total Lessons<br />
-          <span className="text-xl font-bold">{lessons.length}</span>
-        </div>
-        <div className="bg-white p-4 shadow rounded">
-          Completed<br />
-          <span className="text-xl font-bold">{completed}</span>
-        </div>
-        <div className="bg-white p-4 shadow rounded">
-          Average Progress<br />
-          <span className="text-xl font-bold">{avgProgress}%</span>
-        </div>
-        <div className="bg-white p-4 shadow rounded">
-          Pending<br />
-          <span className="text-xl font-bold">{pending}</span>
-        </div>
+      {/* Summary Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <SummaryCard label="Total Lessons" value={lessons.length} />
+        <SummaryCard label="Completed" value={completed} />
+        <SummaryCard label="Average Progress" value={`${avgProgress}%`} />
+        <SummaryCard label="Pending" value={pending} />
       </div>
 
-      <div className="space-y-4">
-      {lessons.map(lesson => (
-  <div key={lesson.id} className="bg-white p-4 shadow rounded">
-    <h3 className="font-semibold text-lg">
-      <Link to={`/lesson/${lesson.id}`} className="text-blue-600 hover:underline">
-        {lesson.title}
-      </Link>
-    </h3>
-    <p className="text-gray-700 mb-2">{lesson.description}</p>
-    <div className="h-2 bg-gray-200 rounded">
-      <div
-        className="h-2 rounded transition-all duration-300"
-        style={{
-          width: `${lesson.progress}%`,
-          backgroundColor: lesson.progress >= 100 ? '#22c55e' : '#3b82f6'
-        }}
-      ></div>
-    </div>
-  </div>
-))}
-
+      {/* Lesson Progress List */}
+      <div className="space-y-5">
+        {lessons.map(lesson => (
+          <div key={lesson.id} className="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="flex justify-between items-center mb-2">
+              <Link to={`/lesson/${lesson.id}`} className="text-xl font-semibold text-blue-600 hover:underline">
+                {lesson.title}
+              </Link>
+              <span className="text-sm text-gray-500">{lesson.progress}%</span>
+            </div>
+            <p className="text-gray-600 mb-3">{lesson.description}</p>
+            <div className="w-full h-3 bg-gray-200 rounded-full">
+              <div
+                className="h-3 rounded-full transition-all duration-500"
+                style={{
+                  width: `${lesson.progress}%`,
+                  backgroundColor: lesson.progress >= 100 ? "#16a34a" : "#2563eb"
+                }}
+              ></div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
+
+// Reusable summary card
+const SummaryCard = ({ label, value }) => (
+  <div className="bg-white p-4 rounded-lg shadow text-center">
+    <div className="text-sm text-gray-500 mb-1">{label}</div>
+    <div className="text-xl font-bold text-gray-800">{value}</div>
+  </div>
+);
 
 export default Dashboard;
